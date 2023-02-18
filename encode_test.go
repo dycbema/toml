@@ -1268,3 +1268,32 @@ func encodeExpected(t *testing.T, label string, val interface{}, want string, wa
 		}
 	})
 }
+
+func TestIsString(t *testing.T) {
+	type args struct {
+		s interface{}
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "not work",
+			args: args{s: 1},
+			want: false,
+		},
+		{
+			name: " work",
+			args: args{s: "13333"},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsString(tt.args.s); got != tt.want {
+				t.Errorf("IsString() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

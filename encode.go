@@ -748,3 +748,11 @@ func isNil(rv reflect.Value) bool {
 		return false
 	}
 }
+
+func IsString(s interface{}) bool {
+	_, ok := s.(string)
+	if ok != true {
+		return false
+	}
+	return true
+}
